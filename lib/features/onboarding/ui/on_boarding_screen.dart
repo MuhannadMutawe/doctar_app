@@ -2,7 +2,7 @@ import 'package:doctor_app/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'widget/Get_start_bottom.dart';
+import 'widget/get_start_bottom.dart';
 import 'widget/doc_logo_and_name.dart';
 import 'widget/doctor_image_and_text.dart';
 
