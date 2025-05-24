@@ -1,22 +1,18 @@
 import 'package:doctor_app/core/theming/text_styles.dart';
 import 'package:doctor_app/core/widget/app_text_bottom.dart';
-import 'package:doctor_app/core/widget/app_text_form_field.dart';
+import 'package:doctor_app/features/login/data/models/login_request_body.dart';
+import 'package:doctor_app/features/login/logic/login_cubit.dart';
+import 'package:doctor_app/features/login/ui/widget/email_and_password.dart';
+import 'package:doctor_app/features/login/ui/widget/login_bloc_listener.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'widget/already_have_account_text.dart';
 import 'widget/terms_and_conditions_text.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final _formKry = GlobalKey<FormState>();
-  bool _isObscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -42,59 +38,38 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 36.h,
                 ),
-                Form(
-                  key: _formKry,
-                  child: Column(
-                    children: [
-                      AppTextFormField(
-                        hintText: 'Email',
+                Column(
+                  children: [
+                    EmailAndPassword(),
+                    SizedBox(
+                      height: 14.h,
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Text(
+                        'Forget Password?',
+                        style: TextStyles.font14BlueMedium,
                       ),
-                      SizedBox(
-                        height: 18.h,
-                      ),
-                      AppTextFormField(
-                        hintText: 'Password',
-                        obscureText: _isObscureText,
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _isObscureText = !_isObscureText;
-                            });
-                          },
-                          child: Icon(
-                            _isObscureText
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 14.h,
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: Text(
-                          'Forget Password?',
-                          style: TextStyles.font14BlueMedium,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      AppTextBottom(
-                        buttonText: 'Login',
-                        onPressed: () {},
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      TermsAndConditionsText(),
-                      SizedBox(
-                        height: 50.h,
-                      ),
-                      AlreadyHaveAccountText(),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    AppTextBottom(
+                      buttonText: 'Login',
+                      onPressed: () {
+                        validateThenDoLogin(context);
+                      },
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    TermsAndConditionsText(),
+                    SizedBox(
+                      height: 50.h,
+                    ),
+                    AlreadyHaveAccountText(),
+                    LoginBlocListener()
+                  ],
                 )
               ],
             ),
@@ -102,5 +77,16 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void validateThenDoLogin(BuildContext context) {
+    if (context.read<LoginCubit>().formKry.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoginStates(
+            LoginRequestBody(
+              email: context.read<LoginCubit>().emailController.text,
+              password: context.read<LoginCubit>().passwordController.text,
+            ),
+          );
+    }
   }
 }
