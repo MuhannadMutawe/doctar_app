@@ -1,14 +1,14 @@
 import 'package:doctor_app/core/theming/text_styles.dart';
 import 'package:doctor_app/core/widget/app_text_bottom.dart';
-import 'package:doctor_app/features/login/data/models/login_request_body.dart';
 import 'package:doctor_app/features/login/logic/login_cubit.dart';
+import 'package:doctor_app/features/login/ui/widget/do_not_have_account_text.dart';
 import 'package:doctor_app/features/login/ui/widget/email_and_password.dart';
 import 'package:doctor_app/features/login/ui/widget/login_bloc_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'widget/already_have_account_text.dart';
+
 import 'widget/terms_and_conditions_text.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -67,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       height: 50.h,
                     ),
-                    AlreadyHaveAccountText(),
+                    DoNotHaveAccountText(),
                     LoginBlocListener()
                   ],
                 )
@@ -81,12 +81,7 @@ class LoginScreen extends StatelessWidget {
 
   void validateThenDoLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKry.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginStates(
-            LoginRequestBody(
-              email: context.read<LoginCubit>().emailController.text,
-              password: context.read<LoginCubit>().passwordController.text,
-            ),
-          );
+      context.read<LoginCubit>().emitLoginStates();
     }
   }
 }
