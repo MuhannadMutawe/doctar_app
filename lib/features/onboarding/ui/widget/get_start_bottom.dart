@@ -10,7 +10,7 @@ class GetStartBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () => context.pushReplacement(Routes.loginScreen),
+      onPressed: () => context.pushNamedAndRemoveUntil(Routes.loginScreen,predicate: (route) => route.isCurrent,),
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all(AppColors.mainBlue),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
