@@ -28,7 +28,7 @@ class LoginBlocListener extends StatelessWidget {
             );
           },
           success: (loginResponse) {
-            context.pushNamedAndRemoveUntil(Routes.homeScreen,predicate: (route) => route.isCurrent,);
+            context.pushReplacement(Routes.homeScreen);
           },
           error: (error) {
             setupErrorState(context, error);
