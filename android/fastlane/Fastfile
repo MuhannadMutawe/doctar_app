@@ -7,12 +7,12 @@ platform :android do
         sh "flutter clean"
         sh "flutter build apk --release --flavor production --target lib/main.dart --no-tree-shake-icons"
         firebase_app_distribution(
-            app: ENV["FIREBASE_KEY"],
+            app:"1:447230564947:android:81588d72ebdb06526684a6",
             firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
             android_artifact_type: "APK",
             android_artifact_path: "C:/Users/moume/StudioProjects/doctor_app/build/app/outputs/flutter-apk/app-production-release.apk",
             testers: "moumen5733k@gmail.com",
-            release_notes: "first fastlane firebase distribution"
+            release_notes: "first fastlane firebase distribution with github action"
         )
     end
 end
