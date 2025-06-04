@@ -38,14 +38,14 @@ class DoctorBlueContainer extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(45)),
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 24.w, vertical: 12.h)),
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(45),
+                      ),
+                    ),
                     child: Text(
                       'Find Doctors',
-                      style: TextStyles.font13BlueNormal,
+                      style: TextStyles.font13BlueBold,
                     ),
                   ),
                 ),

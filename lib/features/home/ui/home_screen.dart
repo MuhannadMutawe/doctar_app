@@ -1,4 +1,7 @@
 import 'package:doctor_app/features/home/ui/widget/doctor_blue_container.dart';
+import 'package:doctor_app/features/home/ui/widget/doctor_speciality_list_view.dart';
+import 'package:doctor_app/features/home/ui/widget/doctor_speciality_see_all.dart';
+import 'package:doctor_app/features/home/ui/widget/doctors_list_view.dart';
 import 'package:doctor_app/features/home/ui/widget/home_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +27,12 @@ class HomeScreen extends StatelessWidget {
             children: [
               const HomeTopBar(),
               const DoctorBlueContainer(),
-
+              SizedBox(height: 16.h,),
+              const DoctorSpecialitySeeAll(),
+              SizedBox(height: 16.h,),
+              const DoctorSpecialityListView(),
+              SizedBox(height: 2.h,),
+              const DoctorsListView()
             ],
           ),
         ),
