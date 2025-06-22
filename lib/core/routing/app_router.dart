@@ -9,8 +9,10 @@ import 'package:doctor_app/features/sign_up/ui/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/home/logic/home_cubit.dart';
+
 class AppRouter {
-  Route generateRoute(RouteSettings settings) {
+  Route? generateRoute(RouteSettings settings) {
     final arguments = settings.arguments;
     switch (settings.name) {
       case Routes.onBoardingScreen:
@@ -33,16 +35,13 @@ class AppRouter {
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        );
-      default:
-        return MaterialPageRoute(
-          builder: (context) => Scaffold(
-            body: Center(
-              child: Text('no route defined for ${settings.name}'),
-            ),
+          builder: (context) => BlocProvider(
+            create: (context) => HomeCubit(getIt()),
+            child: const HomeScreen(),
           ),
         );
+      default:
+        return null;
     }
   }
 }
