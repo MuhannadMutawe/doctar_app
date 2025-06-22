@@ -3,7 +3,6 @@ import 'package:doctor_app/core/theming/text_styles.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/routing/routes.dart';
 
 class AlreadyHaveAccountText extends StatelessWidget {
   const AlreadyHaveAccountText({super.key});

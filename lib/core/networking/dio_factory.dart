@@ -21,6 +21,13 @@ class DioFactory {
     }
   }
 
+  static void addDioHeader(){
+    dio?.options.headers = {
+      'Accept' : 'application/json',
+      'Authorization' : 'Bearer'
+    };
+  }
+
   static void addDioInterceptor(){
     dio?.interceptors.add(
       PrettyDioLogger(

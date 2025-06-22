@@ -59,6 +59,7 @@ class SignupBlocListener extends StatelessWidget {
           actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(
+                // ignore: deprecated_member_use
                 foregroundColor: Colors.white, backgroundColor: Colors.blue, disabledForegroundColor: Colors.grey.withOpacity(0.38),
               ),
               onPressed: () {
