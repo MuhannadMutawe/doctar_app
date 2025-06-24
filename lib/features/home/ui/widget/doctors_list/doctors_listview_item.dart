@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/theming/text_styles.dart';
-import '../../data/models/specialization_response.dart';
+import '../../../../../core/theming/text_styles.dart';
+import '../../../data/models/specialization_response.dart';
 
 class DoctorsListviewItem extends StatelessWidget {
 

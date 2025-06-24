@@ -1,5 +1,5 @@
 import 'package:doctor_app/features/home/data/models/specialization_response.dart';
-import 'package:doctor_app/features/home/ui/widget/doctors_specialization_listview_item.dart';
+import 'package:doctor_app/features/home/ui/widget/specializations_list/doctors_specialization_listview_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
