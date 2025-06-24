@@ -1,7 +1,8 @@
 import 'package:doctor_app/features/home/ui/widget/doctor_blue_container.dart';
 import 'package:doctor_app/features/home/ui/widget/doctor_speciality_see_all.dart';
+import 'package:doctor_app/features/home/ui/widget/doctors_list/doctors_bloc_builder.dart';
 import 'package:doctor_app/features/home/ui/widget/home_top_bar.dart';
-import 'package:doctor_app/features/home/ui/widget/specializations_and_doctors_bloc_builder.dart';
+import 'package:doctor_app/features/home/ui/widget/specializations_list/specializations_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,7 +35,9 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 16.h,
                 ),
-                const SpecializationsAndDoctorsBlocBuilder()
+                const SpecializationsBlocBuilder(),
+                SizedBox(height: 8.h),
+                const DoctorsBlocBuilder(),
               ],
             ),
           ),

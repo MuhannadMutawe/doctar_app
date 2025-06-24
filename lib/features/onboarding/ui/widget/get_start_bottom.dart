@@ -1,4 +1,5 @@
 import 'package:doctor_app/core/helpers/extensions.dart';
+import 'package:doctor_app/core/helpers/shared_preference.dart';
 import 'package:doctor_app/core/routing/routes.dart';
 import 'package:doctor_app/core/theming/app_colors.dart';
 import 'package:doctor_app/core/theming/text_styles.dart';
@@ -10,7 +11,10 @@ class GetStartBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () => context.pushReplacement(Routes.loginScreen),
+      onPressed: () {
+        SharedPrefController().save<bool>(key: PrefKeys.showOnBoarding,value: true);
+        context.pushReplacement(Routes.loginScreen);
+      },
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all(AppColors.mainBlue),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
